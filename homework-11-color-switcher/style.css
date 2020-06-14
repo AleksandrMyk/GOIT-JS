@@ -1,0 +1,29 @@
+body {
+	background-color: #494949;
+}
+
+.btn-box {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	min-width: 120px;
+	height: 60px;
+	margin-right: 10px;
+	border: 2px solid #000000;
+	border-radius: 4px;
+	font-size: 32px;
+	font-weight: 600;
+	background-color: rgb(116, 109, 109);
+	cursor: pointer;
+}
+
+.btn:focus, .btn:hover {
+	box-shadow: 0 0 0 2px #cbd6ee;
+	border: none;
+}
