@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
 	background-color: #494949;
 }
@@ -38,4 +39,46 @@ body {
 }
 .title:hover, .title:focus {
 	color: rgb(4, 4, 114);
+=======
+body {
+	background-color: #494949;
+}
+
+.timer {
+	display: flex;
+	justify-content: center;
+	max-width: 700px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	padding-top: 150px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 50px;
+}
+.field:nth-last-child(1) {
+	margin-right: 0px;
+}
+
+.value {
+	font-size: 80px;
+}
+.label {
+	font-size: 20px;
+	color: #ffffff;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	font-size: 50px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.title:hover, .title:focus {
+	color: rgb(4, 4, 114);
+>>>>>>> 214143e2bc5c58f4708717718e89d318f82ed38f
 }
