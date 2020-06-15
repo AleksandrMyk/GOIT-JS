@@ -2,8 +2,8 @@ import fetchCountries from './fetchCountries.js';
 import list from '../tamplate/list.hbs';
 import listItems from '../tamplate/listitems.hbs';
 import debounce from 'lodash.debounce';
-import { defaults } from '@pnotify/core';
-import { error } from '@pnotify/core';
+import { error, notice } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
 
 
 
@@ -35,19 +35,31 @@ function searchFormInputHandler(e) {
 		if (!data) {
 			return;
 		} else if (data.length > 10) {
-			defaults.styling = 'material';
 			error({
 				type: 'error',
 				text: 'Слишком много совпадений. Введите минимум 2 буквы!',
-				delay: 1000,
 				addClass: 'error',
+				delay: 5000,
+				closerHover: true,
+				sticker: false,
+				stickerHover: false,
+				animateSpeed: 'slow'
 			});
 		} else if (data.length >= 2 && data.length <= 10) {
 			insertListItem(renderCountriesList);
 		} else if (data.length === 1) {
 			insertListItem(markup);
 		} else {
-			alert('Такой страны нет!!');
+			notice({
+				type: 'notice',
+				text: 'Такой страны нет!!',
+				addClass: 'error',
+				delay: 5000,
+				closerHover: true,
+				sticker: false,
+				stickerHover: false,
+				animateSpeed: 'slow'
+			});
 		}
 	});
 }
