@@ -63,10 +63,6 @@ function loadMoreBtnHandler() {
   if (apiService.page > 1) {
     apiService.requestImages().then(images => {
       insertListItems(images);
-      window.scrollTo({
-        top: position,
-        behavior: 'smooth',
-      });
     });
   }
 }

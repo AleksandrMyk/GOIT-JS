@@ -9,17 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luxplanjay/webpack-starter-kit.git"
-  },
-  "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/luxplanjay/webpack-starter-kit/issues"
-  },
-  "homepage": "https://github.com/luxplanjay/webpack-starter-kit#readme",
+  "homepage": "https://github.com/AleksandrMyk/GOIT-JS/tree/master/homework-13-image-finder",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
