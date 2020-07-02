@@ -1,27 +1,15 @@
 import apiService from'./apiService.js';
-import * as basicLightbox from 'basiclightbox';
-import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import items from '../templates/items.hbs';
-
+import handleOriginalImage from './basicLightbox';
 
 const refs = {
-	searchForm: document.querySelector('#search-form'),
-  gallery: document.querySelector('#gallery'),
+  searchForm: document.querySelector('#search-form'),
   button: document.querySelector('button[data-action="load-more"]'),
-  image: document.querySelector('#gallery_image'),
+  modal: document.querySelector('#gallery')
 }
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 refs.button.addEventListener('click', loadMoreBtnHandler);
-refs.gallery.addEventListener('click', handleOriginalImage);
-
-function handleOriginalImage(evt) {
-  const instance = basicLightbox.create(`
-     <img src="${evt.target.dataset.source}" width="100%">
- `);
-
-  instance.show();
-  console.log(evt.target.dataset.source);
-}
+refs.modal.addEventListener('click', handleOriginalImage);
 
 function searchFormSubmitHandler(e) {
   e.preventDefault();
@@ -35,7 +23,7 @@ function searchFormSubmitHandler(e) {
 
   apiService.resetPage();
   apiService.searchQuery = input.value;
- requestImagesApi();
+  requestImagesApi();
 
   input.value = '';
 }
@@ -45,6 +33,10 @@ function requestImagesApi() {
     .requestImages()
     .then(images => {
       insertListItems(images);
+      const displayBlock = refs.button.style.display = 'block';
+      if (apiService.page > 1) {
+        displayBlock;
+      } else {refs.button.style.display = 'none';}
     })
     .catch(error => console.warn(error))
 };
@@ -52,17 +44,18 @@ function requestImagesApi() {
 function insertListItems(images) {
   const markup = items(images);
 
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  refs.modal.insertAdjacentHTML('beforeend', markup);
 }
 
 function clearListItems() {
-  refs.gallery.innerHTML = '';
+  refs.modal.innerHTML = '';
 }
 
 function loadMoreBtnHandler() {
-  if (apiService.page > 1) {
-    apiService.requestImages().then(images => {
+    apiService
+    .requestImages()
+    .then(images => {
       insertListItems(images);
     });
-  }
 }
+ 
